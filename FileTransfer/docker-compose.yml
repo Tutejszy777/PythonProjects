@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  file_server:
+    build:
+      context: ./receiver(serv)
+    container_name: file_server
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./receiver(serv)/received_files:/app/received_files
+    networks:
+      - file_transfer_network # connects via bridge
+
+  file_client:
+    build:
+      context: ./sending
+    container_name: file_client
+    volumes:
+      - ./sending/data_from:/app/data_from
+    networks:
+      - file_transfer_network
+    depends_on:
+      - file_server # waits for file_server to be up
+    entrypoint: [
+        "python",
+        "file_client.py",
+        "/app/data/example_folder",
+        "file_server",
+        "5000",
+      ] # run when started
+
+networks:
+  file_transfer_network:
+    driver: bridge
