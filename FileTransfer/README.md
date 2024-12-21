@@ -18,8 +18,8 @@ docker run -d --name server -p 5000:5000 file_server
 Place your file or folder to send in a directory, e.g., ./data, and run the client container with the directory mounted:
 docker run --rm -v $(pwd)/data:/app/data file_client python file_client.py "/app/data/example_folder" 127.0.0.1 5000
 
-///////////////////////////////
 
+}
 # with yml 
 
 Build and Run Containers:

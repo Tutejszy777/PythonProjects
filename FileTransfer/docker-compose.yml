@@ -17,18 +17,12 @@ services:
       context: ./sending
     container_name: file_client
     volumes:
-      - ./sending/data_from:/app/data_from
+      - ./sending/send:/app/send
     networks:
       - file_transfer_network
     depends_on:
       - file_server # waits for file_server to be up
-    entrypoint: [
-        "python",
-        "file_client.py",
-        "/app/data/example_folder",
-        "file_server",
-        "5000",
-      ] # run when started
+    entrypoint: ["python", "file_client.py", "/app/send", "file_server", "5000"] # run when started
 
 networks:
   file_transfer_network:
