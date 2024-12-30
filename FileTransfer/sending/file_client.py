@@ -23,7 +23,7 @@ def send_file(file_path, server_host, server_port):
     client_socket.connect((server_host, server_port))
 
     # send name, size and file
-    metadata = f"{os.path.basename(zip_file)}|{file_size}"
+    metadata = f"{os.path.basename(zip_file)}|{file_size}\n"
     client_socket.sendall(metadata.encode())
 
     with open(zip_file, "rb") as file:

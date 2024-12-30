@@ -22,11 +22,13 @@ def start_server(host='0.0.0.0', port=5000):
             conn, addr = server_socket.accept()
             print(f"Connection with {addr}")
 
-            metadata = conn.recv(1024).decode()
-            if not metadata:
-                print("No metadata received. Closing connection.")
-                conn.close()
-                continue
+            metadata = b""
+            while not metadata.endswith(b"\n"):
+                chunk = conn.recv(1)
+                if not chunk:
+                    print("No metadata received")
+                metadata += chunk
+            metadata = metadata.decode().strip()
 
             filename, filesize = metadata.split('|')
             filesize = int(filesize)

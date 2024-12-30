@@ -8,10 +8,12 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ./receiver(serv)/received_files:/received_files
+      - ./received_files:/received_files
     networks:
       - file_transfer_network # connects via bridge
-    entrypoint: ["python", "file_server.py"] # run when started
+    environment:
+      - PYTHONUNBUFFERED=1 # Ensures logs are flushed immediately
+    entrypoint: ["python", "-u", "file_server.py"] # "-u" ensures unbuffered logs
 
   file_client:
     build:
