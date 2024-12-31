@@ -39,7 +39,7 @@ def send_file(file_path, server_host, server_port):
 
 if __name__ == "__main__":
     folder_to_send = "/send"
-    server_ip = "file_server"
+    server_ip = "file_server" #actual IP of the server computer (now it's just a docker bridge)
     server_port = 5000
     
     send_file(folder_to_send, server_ip, server_port)

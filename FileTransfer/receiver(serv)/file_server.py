@@ -2,7 +2,7 @@ import socket
 import os
 import zipfile
 
-SAVE_DIR = "received_files"
+SAVE_DIR = "/received_files"
 
 def decompress_file(zip_path, extract_to):
     with zipfile.ZipFile(zip_path, 'r') as zip_ref:
@@ -46,7 +46,8 @@ def start_server(host='0.0.0.0', port=5000):
                     print(f"Progress: {received_size}/{filesize} bytes")
 
             if file_path.endswith('.zip'):
-                decompress_file(file_path, SAVE_DIR)
+                decompress_file(file_path, SAVE_DIR) # mark if you don't want to decompress from zip file
+                os.remove("/received_files/send.zip") # mark if you need zip file 
 
             print(f"File {filename} received successfully")
         except socket.timeout:
