@@ -8,7 +8,7 @@ def home():
 
 @app.route('/run')
 def run():
-    result = "Hello I just executed a python script on your browser"
+    result = f"<h1>I lova you</h1>"
     return result
 
 if __name__ == '__main__':
