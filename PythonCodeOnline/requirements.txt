@@ -1,0 +1,7 @@
+Flask
+gunicorn
+
+python-dotenv # load env variables
+
+requests # url parameters and & JSON parsing
+
