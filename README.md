@@ -6,5 +6,5 @@ Python code online project is written and deployed by me with no reasson -_- .
 
 # Future ideas:
 
-1. Notification system.
+1. Notification system. https://www.reddit.com/r/rails/comments/175e0fk/which_provider_for_sending_sms_messages_is_the/?rdt=48981
 2. Syncronization of obsidian files on different pc's.
