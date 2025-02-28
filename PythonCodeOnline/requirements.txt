@@ -1,7 +1,5 @@
 Flask
 gunicorn # server 
-
 python-dotenv # load env variables
-
 requests # url parameters and & JSON parsing - http requests
 
