@@ -1,23 +1,28 @@
 import psycopg2
+import os
 from twilio.rest import Client
+from dotenv import load_dotenv
 
 # message
 
 MESSAGE = """Hello, this is a test message"""
 
-# twilio
-SID = ""
-AUTH_TOKEN = ""
-PHONE_NUMBER = ""
+
+# Twilio credentials
+load_dotenv()
+
+SID = os.getenv("TWILIO_SID")
+AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
+PHONE_NUMBER = os.getenv("TWILIO_PHONE_NUMBER")
 
 # DB connection
 
 conn = psycopg2.connect(
-    dbname="",
-    user="",
-    password="",
-    host="",
-    port=""
+    dbname="db",
+    user="postgres",
+    password="Password",
+    host="localhost",
+    port="5432"
 )
 
 def send_sms(phone_number, message):
